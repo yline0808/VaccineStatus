@@ -14,13 +14,14 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private var findDate = SimpleDateFormat("yyyy-MM-dd 00:00:00").format(Date(System.currentTimeMillis()))
+    private var findDate = SimpleDateFormat("yyyy-MM-dd 00:00:00", Locale.getDefault()).format(Date(System.currentTimeMillis()))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         setListener()
+        getRetrofit()
         binding.textviewDate.text = findDate
     }
 
@@ -53,7 +54,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<VaccineBody>, t: Throwable) {
-                binding.textviewResponse.text = "API 호출중 오류발생"
                 Log.e("retrofit2 error", "${t.printStackTrace()}")
             }
         })

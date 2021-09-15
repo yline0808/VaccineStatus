@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
 }
 
+apply plugin:'kotlin-kapt'
+
 // local.properties 사용을 위함
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
