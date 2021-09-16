@@ -4,9 +4,8 @@ import retrofit2.http.GET
 import retrofit2.Call
 import retrofit2.http.Query
 
-
 interface ApiService {
-    @GET("api/15077756/v1/vaccine-stat")
+    @GET(BuildConfig.ENDPOINT_GET_VACCINE_STATUS)
     fun getInfo(
         @Query("perPage")PerPage:Int,
         @Query("page")Page:Int,

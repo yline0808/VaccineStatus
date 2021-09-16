@@ -27,6 +27,8 @@ android {
 
         // url 변수 지정
         buildConfigField "String", "URL_VACCINE", properties['url.vaccine']
+        // endpoint 변수 지정
+        buildConfigField "String", "ENDPOINT_GET_VACCINE_STATUS", properties['endPoint.getVaccineStatus']
         // api key 변수 지정
         buildConfigField "String", "API_KEY", properties['api.key']
     }
