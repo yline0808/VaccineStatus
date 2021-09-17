@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
             // api 호출 실패시
             override fun onFailure(call: Call<VaccineBody>, t: Throwable) {
-                Log.e("retrofit2 error", "${t.printStackTrace()}")
+                Log.e("retrofit onFailure", "${t.printStackTrace()}")
                 Toast.makeText(applicationContext, "fail", Toast.LENGTH_SHORT).show()
             }
         })
