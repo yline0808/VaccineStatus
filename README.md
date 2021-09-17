@@ -1,7 +1,7 @@
 # VaccineInformation
 
 ## 프로젝트 계획
-> 안드로이드에서 api 호출과 코루틴 테스트를 위함
+> 안드로이드에서 retrofit을 사용한 api 호출
 
 ## API
 1. 예방접종 현황 api 사용법
