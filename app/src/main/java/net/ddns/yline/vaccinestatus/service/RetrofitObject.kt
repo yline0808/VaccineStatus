@@ -1,5 +1,6 @@
-package net.ddns.yline.vaccinestatus
+package net.ddns.yline.vaccinestatus.service
 
+import net.ddns.yline.vaccinestatus.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -11,7 +12,7 @@ object RetrofitObject{
             .build()
     }
 
-    fun getApiService():ApiService{
+    fun getApiService(): ApiService {
         return getRetrofit().create(ApiService::class.java)
     }
 }

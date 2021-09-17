@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.Toast
 import net.ddns.yline.vaccinestatus.databinding.ActivityMainBinding
+import net.ddns.yline.vaccinestatus.dto.VaccineStatusBody
+import net.ddns.yline.vaccinestatus.service.RetrofitObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -45,22 +47,23 @@ class MainActivity : AppCompatActivity() {
     // 백신 정보 불러오기
     private fun getVaccineStatus(){
         Log.d("print findDate",findDate)
-        RetrofitObject.getApiService().getInfo(20, 1, findDate).enqueue(object : Callback<VaccineBody>{
+        RetrofitObject.getApiService().getVaccineStatus(BuildConfig.ENDPOINT_GET_VACCINE_STATUS ,20, 1, findDate).enqueue(object : Callback<VaccineStatusBody>{
             // api 호출 성공시
-            override fun onResponse(call: Call<VaccineBody>, response: Response<VaccineBody>) {
+            override fun onResponse(call: Call<VaccineStatusBody>, response: Response<VaccineStatusBody>) {
                 setResponseText(response.code(), response.body())
+                Log.d("|||", response.toString())
                 Toast.makeText(applicationContext, "success", Toast.LENGTH_SHORT).show()
             }
 
             // api 호출 실패시
-            override fun onFailure(call: Call<VaccineBody>, t: Throwable) {
+            override fun onFailure(call: Call<VaccineStatusBody>, t: Throwable) {
                 Log.e("retrofit onFailure", "${t.printStackTrace()}")
                 Toast.makeText(applicationContext, "fail", Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-    private fun setResponseText(resCode:Int, body:VaccineBody?){
+    private fun setResponseText(resCode:Int, body:VaccineStatusBody?){
         // 상태별 text 지정
         binding.textviewResponse.text = when(resCode){
             200 -> {

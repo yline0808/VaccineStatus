@@ -1,10 +1,10 @@
-package net.ddns.yline.vaccinestatus
+package net.ddns.yline.vaccinestatus.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class VaccineBody(
+data class VaccineStatusBody(
     @SerializedName("currentCount") val currentCount:Int,   // 현재 검색된 데이터 수
-    @SerializedName("data") val data:List<Vaccine>,         // 백신 현황 데이터
+    @SerializedName("data") val data:List<VaccineStatus>,   // 백신 현황 데이터
     @SerializedName("matchCount") val matchCount:Int,       // 검색과 일치하는 데이터 수
     @SerializedName("page") val page:Int,                   // 데이터 페이지
     @SerializedName("perPage") val perPage:Int,             // 한번에 불러올 데이터
@@ -20,7 +20,7 @@ data class VaccineBody(
     }
 }
 
-data class Vaccine(
+data class VaccineStatus(
     @SerializedName("accumulatedFirstCnt") val accumulatedFirstCnt:Int,     // 전일까지의 누적 통계 1차
     @SerializedName("accumulatedSecondCnt") val accumulatedSecondCnt:Int,   // 전일까지의 누적 통계 2차
     @SerializedName("baseDate") val baseDate:String,                        // 통계 기준일자
